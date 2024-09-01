@@ -1,0 +1,21 @@
+{
+  "name": "ecies-web",
+  "version": "0.1.0",
+  "description": "ECIES for the browser",
+  "main": "ecies.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/newgrp/ecies-web.git"
+  },
+  "keywords": [
+    "ecies",
+    "cryptography",
+    "browser"
+  ],
+  "author": "Conrad Parker",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/newgrp/ecies-web/issues"
+  },
+  "homepage": "https://github.com/newgrp/ecies-web#readme"
+}

@@ -1,1 +1,5 @@
 .markdownlint.json
+
+# Node.js stuff.
+node_modules/
+package-lock.json
