@@ -44,6 +44,8 @@ const keyPair = await crypto.subtle.generateKey(
 
 // Decide what message to encrypt and what parameters to use.
 const eciesParams = {
+    format: "cryptokey",
+    ecParams: { name: "ECDH", namedCurve: "P-256" },
     hkdfParams: { name: "HKDF", hash: "SHA-256" },
     aesParams: "AES-CTR",
     hmacParams: { name: "HMAC", hash: "SHA-256" }
