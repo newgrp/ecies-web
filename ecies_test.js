@@ -110,13 +110,7 @@ async function noHMACParamsRejectedTest() {
 
 // Tests that encrypted data missing an HMAC is rejected if HMAC parameters are specified.
 async function missingHMACRejectedTest() {
-  const params = {
-    format: "cryptokey",
-    ecParams: { name: "ECDH", namedCurve: "P-256" },
-    hkdfParams: { name: "HKDF", hash: "SHA-256" },
-    aesParams: "AES-CTR",
-    hmacParams: { name: "HMAC", hash: "SHA-256" },
-  };
+  let params = structuredClone(defaultParams);
 
   // Generate a keypair.
   const keyPair = await crypto.subtle.generateKey(
@@ -143,13 +137,7 @@ async function missingHMACRejectedTest() {
 
 // Tests that encrypted data with an HMAC is rejected if HMAC parameters are not specified.
 async function missingHMACParamsRejectedTest() {
-  let params = {
-    format: "cryptokey",
-    ecParams: { name: "ECDH", namedCurve: "P-256" },
-    hkdfParams: { name: "HKDF", hash: "SHA-256" },
-    aesParams: "AES-CTR",
-    hmacParams: { name: "HMAC", hash: "SHA-256" },
-  };
+  let params = structuredClone(defaultParams);
 
   // Generate a keypair.
   const keyPair = await crypto.subtle.generateKey(
@@ -166,7 +154,7 @@ async function missingHMACParamsRejectedTest() {
   );
 
   // Check that decryption fails without HMAC parameters.
-  params.hmac = undefined;
+  params.hmacParams = undefined;
   assertIsRejected(
     eciesDecrypt(params, keyPair.privateKey, encryptedData),
     Error,
